@@ -13,10 +13,11 @@ class Form extends React.Component{
         const {subject,score}=this.state;
         const newGrade={subject,score,id:this.state.grades.length+1};
 
+        if(subject!=='' && score<=100){
 
-
-        this.setState({'grades':[...this.state.grades,newGrade]})
-
+                this.setState({'grades':[...this.state.grades,newGrade]})
+     
+               }
     }
 
     onChange=(event)=>{
@@ -27,19 +28,37 @@ class Form extends React.Component{
     render(){
 
         return (
-            <div>
-            <form onSubmit={this.onSubmit} >
-                <div className='form-group'>
-                    <input className='form-control' name='subject' onChange={this.onChange} type='text' placeholder='Enter Subject'/>
-                </div>
-                <div className='form-group'>
-                    <input type='form-control' name='score' type='number' onChange={this.onChange}  placeholder='Enter Score'/>
-                </div>
-    
-                <input type='submit' value='Add'/>
-            </form>
-             <br/>
-            <hr/>
+
+
+
+
+
+
+      <div className="card my-5">
+      <div className="card-body">
+        <h5 className="card-title text-mute">Add a new student grade</h5>
+
+
+        <form onSubmit={this.onSubmit}>
+        <div className="row">
+          <div className="col">
+          <input className='form-control' name='subject' onChange={this.onChange} type='text' placeholder='Enter Subject'/>
+                  
+          </div>
+          <div className="col">
+          <input name='score' className='form-control' type='number' onChange={this.onChange}  placeholder='Enter Score'/>
+             
+          </div>
+
+
+          <div className="col">
+          <input type='submit' className='btn btn-primary' value='Add'/>
+          
+          </div>
+
+          </div>
+      </form>
+             </div>
 
             <GradeList grades={this.state.grades}/>
 
@@ -47,12 +66,7 @@ class Form extends React.Component{
 
             </div>
         )
-    
     }
-
-
-   
-
 }
 
 

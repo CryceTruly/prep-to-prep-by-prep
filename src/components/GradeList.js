@@ -5,18 +5,13 @@ export default function gradeList (props){
         for(let i=0;i<=props.grades.length;i++){
             if(props.grades[i]!==undefined){
                total+= parseInt(props.grades[i].score);
-            
             }
          }
-    
-   
-
-    
         return (
-            <div>
-                <h4>All grades</h4>
+            <div className='container'>
+                <h4 className='text-muted'>All grades</h4>
                 {props.grades.length>0?(
-                    <table>
+                    <table className='table table-stripped'>
                     <thead>
                         <tr><th>Subject</th><th>Score</th>
                         </tr>
@@ -29,7 +24,7 @@ export default function gradeList (props){
                        <tr><td>Total</td><td>{total}</td></tr>
                     </tbody>
                 </table>
-                ):(<h4>No Grades yet</h4>)}
+                ):(<p>No Grades yet</p>)}
                 
                 
             </div>
