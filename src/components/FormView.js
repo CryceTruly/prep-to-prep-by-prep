@@ -9,7 +9,7 @@ const  FormView=props=> {
       <div className="card my-5">
       <div className="card-body">
 {shouldEdit?(
-<Form cardTitle={'Edit Grade'} closeEdit={closeEdit} selectedGrade={selectedGrade} onSubmit={onEditSubmit} onChange={onChange}  btnText={'Edit'}  btnCls={'btn btn-info'} />
+<Form cardTitle={'Edit Grade'} closeEdit={closeEdit} selectedGrade={selectedGrade} onEditSubmit={onEditSubmit} onChange={onChange}  btnText={'Edit'}  btnCls={'btn btn-info'} />
 ):(
     <Form cardTitle={'Add a new student grade'} closeEdit={closeEdit} selectedGrade={selectedGrade} onSubmit={onSubmit} onChange={onChange} btnText={'Add'} btnCls={'btn btn-primary'}  />
 )}

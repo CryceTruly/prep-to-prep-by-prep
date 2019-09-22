@@ -31,7 +31,7 @@ class Form extends React.Component{
   
     onChange=(event)=>{
         this.setState({[event.target.name]:event.target.value});
-        console.log(this.state);
+        
         
     }
     deleteGrade=id=>{
@@ -40,15 +40,13 @@ class Form extends React.Component{
                 const newArray=[...this.state.grades];
                 newArray.splice(index,1);
                 this.setState({grades:newArray});
-
-
     }
 }
-           )
+)
 }
 
 closeEdit=()=>{
-    this.setState({shouldEdit:false})
+    this.setState({shouldEdit:false,selectedGrade:{}})
 };
 
 editGrade=grade=>{
@@ -62,7 +60,7 @@ onEditSubmit=(event,item)=>{
     if(subject!==''&& score>0 && score<=100){
         const grades=this.state.grades.map(grade=>grade.id===item.id?updatedGrade:grade)
         this.setState({
-            grades:grades,shouldEdit:false})
+            grades:grades,shouldEdit:false,selectedGrade:{}})
 
            }
 }
