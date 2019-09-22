@@ -1,16 +1,18 @@
 import React from 'react'
+import GradeItem from './GradeItem';
 
-export default function gradeList (props){
+const GradeList= props=>{
     let total=0
-        for(let i=0;i<=props.grades.length;i++){
-            if(props.grades[i]!==undefined){
-               total+= parseInt(props.grades[i].score);
+    const {grades}=props;
+        for(let i=0;i<=grades.length;i++){
+            if(grades[i]!==undefined){
+               total+= parseInt(grades[i].score);
             }
          }
         return (
             <div className='container'>
                 <h4 className='text-muted'>All grades</h4>
-                {props.grades.length>0?(
+                {grades.length>0?(
                     <table className='table table-stripped'>
                     <thead>
                         <tr><th>Subject</th><th>Score</th>
@@ -18,10 +20,10 @@ export default function gradeList (props){
                     </thead>
 
                     <tbody>
-                        {props.grades.map(grade=>(
- <tr key={grade.id}><td>{grade.subject}</td><td>{grade.score}</td></tr>
+                        {grades.map(grade=>(
+                            <GradeItem grade={grade} key={grade.id}/>
                         ))}
-                       <tr><td>Total</td><td>{total}</td></tr>
+                       <tr><td>Total</td><td className='lead text-dark'>{total}</td></tr>
                     </tbody>
                 </table>
                 ):(<p>No Grades yet</p>)}
@@ -31,3 +33,4 @@ export default function gradeList (props){
         )
     }
 
+    export default GradeList;
