@@ -1,13 +1,11 @@
 import React from 'react'
 
-const  Form=props=> {
+const Form=props=> {
     const {onSubmit,onChange,btnCls,btnText,cardTitle,closeEdit,selectedGrade,onEditSubmit}=props;
    
     return (
         <div>
-
         <h5 className="card-title text-mute">{cardTitle} {selectedGrade.id?(<button className={'btn btn-sm btn-warning'} onClick={closeEdit}>x</button>):(null)} </h5> 
-        {selectedGrade.id}
         <form onSubmit={!selectedGrade.id?onSubmit:((event)=>{onEditSubmit(event,selectedGrade)})}>
               <div className="row">
                 <div className="col">
