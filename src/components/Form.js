@@ -31,8 +31,6 @@ class Form extends React.Component{
   
     onChange=(event)=>{
         this.setState({[event.target.name]:event.target.value});
-        
-        
     }
     deleteGrade=id=>{
            this.state.grades.forEach((grade,index,arr)=>{
