@@ -6,7 +6,7 @@ class Form extends React.Component{
 
     state={
         grades:[],
-        selectedGrade:null,
+        selectedGrade:{},
         shouldEdit:false
     }
 
@@ -30,14 +30,18 @@ class Form extends React.Component{
     }
   
     onChange=(event)=>{
-        this.setState({[event.target.name]:event.target.value})   
+        this.setState({[event.target.name]:event.target.value});
+        console.log(this.state);
+        
     }
     deleteGrade=id=>{
            this.state.grades.forEach((grade,index,arr)=>{
                if(grade.id===id){
                 const newArray=[...this.state.grades];
                 newArray.splice(index,1);
-                this.setState({grades:newArray});           
+                this.setState({grades:newArray});
+
+
     }
 }
            )
@@ -45,27 +49,22 @@ class Form extends React.Component{
 
 closeEdit=()=>{
     this.setState({shouldEdit:false})
-}
+};
 
 editGrade=grade=>{
-this.setState({shouldEdit:!this.setState.shouldEdit})
-    this.setState({selectedGrade:grade})
+this.setState({selectedGrade:grade,shouldEdit:true});
+};
 
-    console.log(grade);
-    
-}
-
-onEditSubmit=(event)=>{
-    console.log(event);
-    
+onEditSubmit=(event,item)=>{
     event.preventDefault();
     const {subject,score}=this.state;
-    const newGrade={subject,score,id:this.state.grades.length+1};
-    if(subject!==''&& score>0 && score<=100 && !this.subjectExists(subject)){
-            this.setState({grades:[...this.state.grades,newGrade]})
+    const updatedGrade={subject,score,id:item.id};
+    if(subject!==''&& score>0 && score<=100){
+        const grades=this.state.grades.map(grade=>grade.id===item.id?updatedGrade:grade)
+        this.setState({
+            grades:grades,shouldEdit:false})
+
            }
-    
-    
 }
 
     render(){

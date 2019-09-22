@@ -10,9 +10,9 @@ const  FormView=props=> {
 {shouldEdit?(
 <div>
 
-<h5 className="card-title text-mute">Edit Grade <span className='btn btn-warning right-align pull-right' onClick={closeEdit}>x</span> </h5> 
-
-<form onSubmit={onEditSubmit}>
+<h5 className="card-title text-mute">Edit Grade <button className='btn btn-danger right-align pull-right' onClick={closeEdit}>x</button> </h5> 
+{selectedGrade.name}
+<form onSubmit={(event)=>onEditSubmit(event,selectedGrade)}>
       <div className="row">
         <div className="col">
         <input className='form-control' name='subject' onChange={onChange} type='text' placeholder='Enter Subject' defaultValue={selectedGrade.subject}/>
