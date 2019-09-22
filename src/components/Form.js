@@ -9,7 +9,6 @@ class Form extends React.Component{
     }
 
     subjectExists=subject=>{
-
         let exists=false
         this.state.grades.forEach(grade=>{
             if(subject===Object.values(grade)[0]){
