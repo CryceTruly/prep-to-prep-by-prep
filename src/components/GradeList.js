@@ -3,7 +3,7 @@ import GradeItem from './GradeItem';
 
 const GradeList= props=>{
     let total=0
-    const {grades}=props;
+    const {grades,deleteGrade,editGrade,shouldEdit}=props;
         for(let i=0;i<=grades.length;i++){
             if(grades[i]!==undefined){
                total+= parseInt(grades[i].score);
@@ -20,8 +20,9 @@ const GradeList= props=>{
                     </thead>
 
                     <tbody>
+                    
                         {grades.map(grade=>(
-                            <GradeItem grade={grade} key={grade.id}/>
+                            <GradeItem grade={grade} key={grade.id} deleteGrade={deleteGrade} editGrade={editGrade} shouldEdit={shouldEdit}/>
                         ))}
                        <tr><td>Total</td><td className='lead text-dark'>{total}</td></tr>
                     </tbody>
