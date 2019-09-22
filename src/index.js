@@ -1,15 +1,8 @@
 import React from 'react';
 import ReactDOM from "react-dom";
-import Form from './Form';
+import Form from './components/Form';
+import 'bootstrap/dist/css/bootstrap.css';
 
 
-function App(){
-return (<div>
-    <h2>Hello from react hehe</h2>
-    <Form/>
-</div>
-);
-}
-
-
+const App=()=><div className='container'><Form/></div>
 ReactDOM.render(<App/>,document.getElementById('root'))
